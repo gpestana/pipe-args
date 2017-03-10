@@ -1,0 +1,20 @@
+{
+  "name": "pipe-args",
+  "version": "1.0.0",
+  "description": "Adds piped values from stdin to process argv in a transparent way",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "tap": "^10.3.0"
+  },
+  "scripts": {
+    "test": "echo 'piped_arg' | node test/index.js"
+  },
+  "keywords": [
+    "pipe",
+    "unix",
+    "argv"
+  ],
+  "author": "gpestana",
+  "license": "MIT"
+}
