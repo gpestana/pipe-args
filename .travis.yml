@@ -1,6 +1,6 @@
 language: node
 node_js:
-  - "iojs"
+  - iojs
   - 7
   - 6
   - 5
