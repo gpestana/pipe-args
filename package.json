@@ -1,6 +1,6 @@
 {
   "name": "pipe-args",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Adds piped values from stdin to process argv in a transparent way",
   "main": "index.js",
   "dependencies": {},
