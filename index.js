@@ -2,9 +2,19 @@
 
 'use strict';
 
-module.exports = (function()  {
-  if(process.stdin.isTTY) return;
-  const stdin = require('fs').readFileSync('/dev/stdin').toString();
-  process.argv.push(stdin.trim());
-})();
+module.exports.load = function () {
+  let stdin;
+  if (process.stdin.isTTY) return;
+
+  try {
+    stdin = require('fs').readFileSync('/dev/stdin').toString();
+
+  } catch(e) {
+    if (e.code != 'EAGAIN') throw e;
+    else return;
+  };
+
+  if(stdin) process.argv.push(stdin.trim());
+
+};
 

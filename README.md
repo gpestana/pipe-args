@@ -14,18 +14,16 @@ command line interface/parsers like yarg and commander.js.
 
 ### Installation
 
-``npm install --save pipe-args``
-
+```bash
+$ npm install --save pipe-args
+```
 
 ### Usage
-
-
-Basic usage:
 
 ```javascript
 #!/usr/bin/env node
 
-const pipe = require('pipe-args');
+const pipe = require('pipe-args').load();
 console.log(`The piped arg is ${process.argv[2]}`);
 ```
 
@@ -35,15 +33,13 @@ $ echo test | node index.js
 $ The piped arg is test
 ```
 
-
 pipe-args plays along with optstrings parsers such as yarg. The following yargs 
 parser code:
-
 
 ```javascript
 #!/usr/bin/env node
 
-const pipe = require('pipe-args');
+const pipe = require('pipe-args').load();
 const yargs = require('yargs')
 
 const cli = yargs.demand(1)
@@ -59,7 +55,9 @@ $ echo piped_arg | yargs-cli.js
 $ { _: [ 'piped_arg' ], '$0': 'index.js' }
 ```
 
+### License:
 
-**author**: gpestana
+MIT © [Gonçalo Pestana](http:/gpestana.com/)
 
-**license**: MIT
+
+
