@@ -1,9 +1,11 @@
 {
   "name": "pipe-args",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": " POSIX compliant pipe argument parser for node CLI apps ",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "ramda": "^0.23.0"
+  },
   "devDependencies": {
     "tap": "^10.3.0"
   },

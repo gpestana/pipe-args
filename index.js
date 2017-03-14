@@ -2,6 +2,7 @@
 
 'use strict';
 
+const _  = require('ramda');
 const fs = require('fs');
 
 
@@ -10,7 +11,7 @@ const validOpts = opts => {
 
   // if there are command constraints, copy stdin->process.argv only if
   // command is valid
-  return opts.commands.includes(process.argv[2]) ? true : false;
+  return _.contains(process.argv[2], opts.commands) ? true : false;
 };
 
 module.exports.load = opts => {
