@@ -1,20 +1,32 @@
 #!/usr/bin/env node
 
+const fs = require('fs');
+
 'use strict';
 
-module.exports.load = function () {
-  let stdin;
+module.exports.load = () => {
   if (process.stdin.isTTY) return;
+  
+  const BUFSIZE = 65536;
+  let nbytes = 0;
+  let chunks = [];
+  let buffer = '';
 
-  try {
-    stdin = require('fs').readFileSync('/dev/stdin').toString();
+  while(true) {
+    try {
+      buffer = Buffer.alloc(BUFSIZE);
+      nbytes = fs.readSync(0, buffer, 0, BUFSIZE, null);
+    } 
+    catch (e) {
+      if (e.code != 'EAGAIN') throw e; 
+    };
 
-  } catch(e) {
-    if (e.code != 'EAGAIN') throw e;
-    else return;
+    if (nbytes === 0) break;
+     chunks.push(buffer.slice(0, nbytes));
   };
-
-  if(stdin) process.argv.push(stdin.trim());
+  
+  const stdin = Buffer.concat(chunks).toString();
+  if (stdin) process.argv.push(stdin.trim()); 
 
 };
 
