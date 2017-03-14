@@ -1,14 +1,14 @@
 {
   "name": "pipe-args",
   "version": "1.1.0",
-  "description": "Adds piped values from stdin to process argv in a transparent way",
+  "description": " POSIX compliant pipe argument parser for node CLI apps ",
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
     "tap": "^10.3.0"
   },
   "scripts": {
-    "test": "echo 'piped_arg' | node test/index.js"
+    "test": "echo 'piped_arg' | node test/test_load.js && echo 'piped_arg' | node test/test_opts_valid.js command && echo 'piped_arg' | node test/test_opts_invalid.js command"
   },
   "keywords": [
     "pipe",

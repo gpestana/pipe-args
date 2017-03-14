@@ -33,6 +33,33 @@ $ echo test | node index.js
 $ The piped arg is test
 ```
 
+#### Options
+
+You can define which commands allow the stdin to be copied to process.argv by
+passing them in the `options` object:
+
+```
+const pipe = require('pipe-args').load(['command']);
+console.log(`The piped arg is ${process.argv[2]}`);
+```
+
+```bash
+$ echo OK | node command index.js
+
+$ The piped arg is OK
+```
+
+```bash
+$ echo OK | node commandNotAllowed index.js
+
+$ The piped arg is null // stdin was not parsed into process.argv
+```
+
+
+
+
+#### Integrations
+
 pipe-args plays along with optstrings parsers such as yarg. The following yargs 
 parser code:
 
@@ -54,6 +81,7 @@ $ echo piped_arg | yargs-cli.js
 
 $ { _: [ 'piped_arg' ], '$0': 'index.js' }
 ```
+
 
 ### License:
 

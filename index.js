@@ -4,7 +4,18 @@
 
 const fs = require('fs');
 
-module.exports.load = () => {
+
+const validOpts = opts => {
+  if(!opts || !opts.commands) return true;
+
+  // if there are command constraints, copy stdin->process.argv only if
+  // command is valid
+  return opts.commands.includes(process.argv[2]) ? true : false;
+};
+
+module.exports.load = opts => {
+
+  if(!validOpts(opts)) return;
   if (process.stdin.isTTY) return;
   
   const BUFSIZE = 65536;
