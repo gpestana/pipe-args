@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-
 'use strict';
+
+const fs = require('fs');
 
 module.exports.load = () => {
   if (process.stdin.isTTY) return;
