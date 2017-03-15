@@ -38,7 +38,9 @@ $ The piped arg is test
 You can define which commands allow the stdin to be copied to process.argv by
 passing them in the `options` object:
 
-```
+```javascript
+#!/usr/bin/env node
+
 const pipe = require('pipe-args').load(['command']);
 console.log(`The piped arg is ${process.argv[2]}`);
 ```
@@ -50,7 +52,7 @@ $ The piped arg is OK
 ```
 
 ```bash
-$ echo OK | node commandNotAllowed index.js
+$ echo OK | node commandNotPiping index.js
 
 $ The piped arg is null // stdin was not parsed into process.argv
 ```
