@@ -16,8 +16,8 @@ const validOpts = opts => {
 
 module.exports.load = opts => {
 
-  if(!validOpts(opts)) return;
-  if (process.stdin.isTTY) return;
+  if(!validOpts(opts)) return false;
+  if (process.stdin.isTTY) return false;
   
   const BUFSIZE = 65536;
   let nbytes = 0;
@@ -38,7 +38,10 @@ module.exports.load = opts => {
   };
   
   const stdin = Buffer.concat(chunks).toString();
-  if (stdin) process.argv.push(stdin.trim()); 
+  if (stdin) {
+    process.argv.push(stdin.trim());
+    return true;
+  }
 
 };
 
